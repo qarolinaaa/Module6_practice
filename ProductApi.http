@@ -1,0 +1,19 @@
+@Host = http://localhost:5000
+
+### GET products with API Key
+GET {{Host}}/api/product
+X-Api-Key: SecretKey123
+
+### GET products without API Key (expect 401)
+GET {{Host}}/api/product
+
+### Login
+POST {{Host}}/api/auth/login
+Content-Type: application/json
+
+{ "username": "student", "password": "12345" }
+
+### Protected products (replace token)
+GET {{Host}}/api/product/secure
+X-Api-Key: SecretKey123
+Authorization: Bearer PASTE_TOKEN_HERE
